@@ -1,4 +1,4 @@
-# canal-spring-boot-starter [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE) [![LICENSE](https://img.shields.io/badge/Fuck-996-red](https://github.com/TequilaCN/canal-spring-boot-starter/blob/main/LICENSE)
+# canal-spring-boot-starter  [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)  [![LICENSE](https://img.shields.io/badge/Fuck-996-red)](https://github.com/TequilaCN/canal-spring-boot-starter/blob/main/LICENSE)
 
 ### 配置项说明:
 
