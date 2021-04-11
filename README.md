@@ -1,4 +1,5 @@
-# canal-spring-boot-starter
+# canal-spring-boot-starter [![LICENSE](https://img.shields.io/badge/Fuck-996-red)](https://github.com/TequilaCN/canal-spring-boot-starter/blob/main/LICENSE)
+
 ### 配置项说明:
 
   
