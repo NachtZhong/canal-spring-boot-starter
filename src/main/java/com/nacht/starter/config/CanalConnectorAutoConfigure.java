@@ -2,16 +2,17 @@ package com.nacht.starter.config;
 
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;
+import com.nacht.starter.handler.CanalConnectionHandler;
+import com.nacht.starter.util.ApplicationContextUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 
-import java.net.InetSocketAddress;
 
 /**
  * @author Nacht
@@ -23,23 +24,25 @@ import java.net.InetSocketAddress;
 @Slf4j
 public class CanalConnectorAutoConfigure {
 
-    private final CanalConnectorProperties canalConnectorProperties;
-
+    /**
+     * 注入配置
+     */
     @Autowired
-    public CanalConnectorAutoConfigure(CanalConnectorProperties properties){
-        this.canalConnectorProperties = properties;
+    private CanalConnectorProperties canalConnectorProperties;
+
+
+    @Bean
+    @Order(Ordered.HIGHEST_PRECEDENCE)
+    public ApplicationContextUtil applicationContextUtil(){
+        return new ApplicationContextUtil();
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "canal", value = "enabled", havingValue = "true")
-    public CanalConnector canalConnector(){
-        log.info("初始化Canal连接");
-        CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress(canalConnectorProperties.getServer(), canalConnectorProperties.getPort()),
-                canalConnectorProperties.getDestination(), "", "");
-        connector.connect();
-        connector.subscribe();
-        return connector;
+    public CanalConnectionHandler canalConnectionHandler(){
+        CanalConnectionHandler canalConnectionHandler = new CanalConnectionHandler(this.canalConnectorProperties);
+        canalConnectionHandler.init();
+        return canalConnectionHandler;
     }
+
 
 }
