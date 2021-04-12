@@ -3,8 +3,8 @@ package com.nacht.starter.handler;
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;
 import com.nacht.starter.config.CanalConnectorProperties;
+import com.nacht.starter.handler.executor.CanalMessageExecutor;
 import lombok.extern.slf4j.Slf4j;
-
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,11 @@ import java.util.concurrent.*;
  */
 @Slf4j
 public class CanalConnectionHandler {
+
+    /**
+     * 消息分发处理器
+     */
+    private CanalMessageDistributeHandler canalMessageDistributeHandler;
 
     /**
      * canal实例连接集合
@@ -34,11 +39,12 @@ public class CanalConnectionHandler {
      */
     private final CanalConnectorProperties canalConnectorProperties;
 
-    public CanalConnectionHandler(CanalConnectorProperties canalConnectorProperties) {
+    public CanalConnectionHandler(CanalConnectorProperties canalConnectorProperties, CanalMessageDistributeHandler messageDistributeHandler) {
         this.canalConnectors = new ArrayList<>();
         this.canalConnectorProperties = canalConnectorProperties;
         ThreadFactory threadFactory = Executors.defaultThreadFactory();
         this.executor = new ThreadPoolExecutor(10, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue<>(), threadFactory);
+        this.canalMessageDistributeHandler = messageDistributeHandler;
     }
 
     /**
@@ -57,7 +63,7 @@ public class CanalConnectionHandler {
                 .forEach(entry -> {
                     CanalConnector canalConnector = initCanalConnector(entry);
                     canalConnectors.add(canalConnector);
-                    executor.execute(new CanalMessageExecutor(canalConnector, entry.getValue(), "CanalMessageExecutor-" + entry.getKey()));
+                    executor.execute(new CanalMessageExecutor(canalConnector, entry.getValue(), "CanalMessageExecutor-" + entry.getKey(), canalMessageDistributeHandler));
                 });
     }
 

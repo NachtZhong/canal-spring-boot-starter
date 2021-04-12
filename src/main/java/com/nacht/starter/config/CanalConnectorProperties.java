@@ -13,8 +13,7 @@ import java.util.Map;
  * @author Nacht
  * Created on 2021/4/10
  */
-@Data
-@ConfigurationProperties("canal")
+@ConfigurationProperties(prefix = "canal")
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CanalConnectorProperties {
 
@@ -24,7 +23,14 @@ public class CanalConnectorProperties {
     @NonNull
     private Map<String, InstanceProperties> instances = new LinkedHashMap<>();
 
-    @Data
+    public Map<String, InstanceProperties> getInstances() {
+        return instances;
+    }
+
+    public void setInstances(Map<String, InstanceProperties> instances) {
+        this.instances = instances;
+    }
+
     public static class InstanceProperties{
 
         /**
@@ -61,6 +67,62 @@ public class CanalConnectorProperties {
          * 订阅表过滤
          */
         private String filter = "";
+
+        public String getServer() {
+            return server;
+        }
+
+        public void setServer(String server) {
+            this.server = server;
+        }
+
+        public int getPort() {
+            return port;
+        }
+
+        public void setPort(int port) {
+            this.port = port;
+        }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public int getBatchSize() {
+            return batchSize;
+        }
+
+        public void setBatchSize(int batchSize) {
+            this.batchSize = batchSize;
+        }
+
+        public long getSleepAfterFailAcquire() {
+            return sleepAfterFailAcquire;
+        }
+
+        public void setSleepAfterFailAcquire(long sleepAfterFailAcquire) {
+            this.sleepAfterFailAcquire = sleepAfterFailAcquire;
+        }
+
+        public String getFilter() {
+            return filter;
+        }
+
+        public void setFilter(String filter) {
+            this.filter = filter;
+        }
     }
 
 }
