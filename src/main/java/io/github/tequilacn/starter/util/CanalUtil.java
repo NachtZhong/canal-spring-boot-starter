@@ -1,10 +1,9 @@
-package com.nacht.starter.util;
+package io.github.tequilacn.starter.util;
 
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import lombok.SneakyThrows;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 /**

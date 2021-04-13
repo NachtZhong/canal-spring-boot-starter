@@ -1,4 +1,4 @@
-package com.nacht.starter.listener;
+package io.github.tequilacn.starter.listener;
 
 import com.alibaba.otter.canal.protocol.CanalEntry;
 

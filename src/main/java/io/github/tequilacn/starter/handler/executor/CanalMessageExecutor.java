@@ -1,9 +1,9 @@
-package com.nacht.starter.handler.executor;
+package io.github.tequilacn.starter.handler.executor;
 
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.protocol.Message;
-import com.nacht.starter.config.CanalConnectorProperties;
-import com.nacht.starter.handler.CanalMessageDistributeHandler;
+import io.github.tequilacn.starter.config.CanalConnectorProperties;
+import io.github.tequilacn.starter.handler.CanalMessageDistributeHandler;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 

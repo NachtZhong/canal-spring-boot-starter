@@ -1,7 +1,7 @@
-package com.nacht.starter.listener;
+package io.github.tequilacn.starter.listener;
 
 import com.alibaba.otter.canal.protocol.CanalEntry;
-import com.nacht.starter.util.CanalUtil;
+import io.github.tequilacn.starter.util.CanalUtil;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;

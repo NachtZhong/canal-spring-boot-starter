@@ -1,10 +1,10 @@
-package com.nacht.starter.handler;
+package io.github.tequilacn.starter.handler;
 
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.alibaba.otter.canal.protocol.Message;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.nacht.starter.listener.CanalEventListener;
-import com.nacht.starter.util.ApplicationContextUtil;
+import io.github.tequilacn.starter.listener.CanalEventListener;
+import io.github.tequilacn.starter.util.ApplicationContextUtil;
 import lombok.SneakyThrows;
 
 import javax.annotation.PostConstruct;

@@ -1,4 +1,4 @@
-package com.nacht.starter.annotation;
+package io.github.tequilacn.starter.annotation;
 
 import org.springframework.stereotype.Component;
 

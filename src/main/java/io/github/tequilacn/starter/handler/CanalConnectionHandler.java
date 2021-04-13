@@ -1,9 +1,9 @@
-package com.nacht.starter.handler;
+package io.github.tequilacn.starter.handler;
 
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;
-import com.nacht.starter.config.CanalConnectorProperties;
-import com.nacht.starter.handler.executor.CanalMessageExecutor;
+import io.github.tequilacn.starter.config.CanalConnectorProperties;
+import io.github.tequilacn.starter.handler.executor.CanalMessageExecutor;
 import lombok.extern.slf4j.Slf4j;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;

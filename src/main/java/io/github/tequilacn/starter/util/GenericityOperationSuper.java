@@ -1,4 +1,4 @@
-package com.nacht.starter.util;
+package io.github.tequilacn.starter.util;
 
 import lombok.Data;
 

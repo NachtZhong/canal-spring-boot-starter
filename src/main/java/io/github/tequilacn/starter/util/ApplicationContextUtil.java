@@ -1,4 +1,4 @@
-package com.nacht.starter.util;
+package io.github.tequilacn.starter.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

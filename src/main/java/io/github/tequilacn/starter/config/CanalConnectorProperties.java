@@ -1,4 +1,4 @@
-package com.nacht.starter.config;
+package io.github.tequilacn.starter.config;
 
 import lombok.Data;
 import lombok.NonNull;

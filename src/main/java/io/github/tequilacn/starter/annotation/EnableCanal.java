@@ -1,7 +1,7 @@
-package com.nacht.starter.annotation;
+package io.github.tequilacn.starter.annotation;
 
-import com.nacht.starter.config.CanalConnectorAutoConfigure;
-import com.nacht.starter.config.CanalConnectorProperties;
+import io.github.tequilacn.starter.config.CanalConnectorAutoConfigure;
+import io.github.tequilacn.starter.config.CanalConnectorProperties;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;
