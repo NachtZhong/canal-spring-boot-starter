@@ -20,7 +20,7 @@ public class CamelCaseUtil {
             return underscore;
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append(ss[0]);
         for (int i = 1; i < ss.length; i++) {
             sb.append(upperFirstCase(ss[i]));
@@ -33,7 +33,8 @@ public class CamelCaseUtil {
      * 驼峰 转下划线
      */
     public static String toLine(String camelCase){
-        Pattern humpPattern = Pattern.compile("[A-Z]");
+        String pattern = "[A-Z]";
+        Pattern humpPattern = Pattern.compile(pattern);
         Matcher matcher = humpPattern.matcher(camelCase);
         StringBuffer sb = new StringBuffer();
         while(matcher.find()){
@@ -47,7 +48,7 @@ public class CamelCaseUtil {
     /**
      * 首字母 转小写
      */
-    private static String lowerFirstCase(String str) {
+    public static String lowerFirstCase(String str) {
         char[] chars = str.toCharArray();
         chars[0] += 32;
         return String.valueOf(chars);
@@ -56,17 +57,11 @@ public class CamelCaseUtil {
     /**
      * 首字母 转大写
      */
-    private static String upperFirstCase(String str) {
+    public static String upperFirstCase(String str) {
         char[] chars = str.toCharArray();
         chars[0] -= 32;
         return String.valueOf(chars);
     }
 
 
-    public static void main(String[] args) {
-        String camelCase = CamelCaseUtil.underscoreToCamelCase("cteate_time");
-        System.out.println(camelCase);//cteateTime
-
-        System.out.println(toLine("cteateTimeAndUser"));//cteate_time_and_user
-    }
 }

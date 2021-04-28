@@ -1,6 +1,8 @@
 package io.github.tequilacn.starter.listener;
 
 import com.alibaba.otter.canal.protocol.CanalEntry;
+import com.google.common.base.Preconditions;
+import io.github.tequilacn.starter.annotation.CanalEventListener;
 
 import java.util.List;
 
