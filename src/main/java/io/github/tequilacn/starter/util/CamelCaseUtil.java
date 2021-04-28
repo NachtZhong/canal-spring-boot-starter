@@ -13,8 +13,6 @@ public class CamelCaseUtil {
 
     /**
      * 下划线命名转驼峰命名
-     * @param underscore
-     * @return
      */
     public static String underscoreToCamelCase(String underscore){
         String[] ss = underscore.split("_");
@@ -33,8 +31,6 @@ public class CamelCaseUtil {
 
     /**
      * 驼峰 转下划线
-     * @param camelCase
-     * @return
      */
     public static String toLine(String camelCase){
         Pattern humpPattern = Pattern.compile("[A-Z]");
@@ -50,8 +46,6 @@ public class CamelCaseUtil {
 
     /**
      * 首字母 转小写
-     * @param str
-     * @return
      */
     private static String lowerFirstCase(String str) {
         char[] chars = str.toCharArray();
@@ -61,8 +55,6 @@ public class CamelCaseUtil {
 
     /**
      * 首字母 转大写
-     * @param str
-     * @return
      */
     private static String upperFirstCase(String str) {
         char[] chars = str.toCharArray();

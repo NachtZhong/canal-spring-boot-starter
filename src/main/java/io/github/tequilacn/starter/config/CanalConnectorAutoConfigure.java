@@ -4,6 +4,7 @@ import io.github.tequilacn.starter.handler.CanalConnectionHandler;
 import io.github.tequilacn.starter.handler.CanalMessageDistributeHandler;
 import io.github.tequilacn.starter.util.ApplicationContextUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
@@ -21,15 +22,7 @@ import org.springframework.core.annotation.Order;
 public class CanalConnectorAutoConfigure {
 
     /**
-     * 注入配置
-     */
-    @Autowired(required = false)
-    private CanalConnectorProperties canalConnectorProperties;
-
-
-    /**
      * spring上下文工具bean
-     * @return
      */
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -38,22 +31,22 @@ public class CanalConnectorAutoConfigure {
     }
 
     /**
-     * canal实例连接处理器bean
-     * @return
-     */
-    @Bean
-    public CanalConnectionHandler canalConnectionHandler(){
-        CanalConnectionHandler canalConnectionHandler = new CanalConnectionHandler(this.canalConnectorProperties, canalMessageDistributeHandler());
-        canalConnectionHandler.init();
-        return canalConnectionHandler;
-    }
-
-    /**
      * canal消息分发处理器bean
-     * @return
      */
     @Bean
     public CanalMessageDistributeHandler canalMessageDistributeHandler(){
         return new CanalMessageDistributeHandler();
     }
+
+    /**
+     * canal实例连接处理器bean
+     */
+    @Bean
+    public CanalConnectionHandler canalConnectionHandler(CanalConnectorProperties canalConnectorProperties, CanalMessageDistributeHandler canalMessageDistributeHandler){
+        CanalConnectionHandler canalConnectionHandler = new CanalConnectionHandler(canalConnectorProperties, canalMessageDistributeHandler);
+        canalConnectionHandler.init();
+        return canalConnectionHandler;
+    }
+
+
 }

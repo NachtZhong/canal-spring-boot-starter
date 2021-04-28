@@ -22,7 +22,7 @@ public class CanalConnectionHandler {
     /**
      * 消息分发处理器
      */
-    private CanalMessageDistributeHandler canalMessageDistributeHandler;
+    private final CanalMessageDistributeHandler canalMessageDistributeHandler;
 
     /**
      * canal实例连接集合
@@ -63,7 +63,7 @@ public class CanalConnectionHandler {
                 .forEach(entry -> {
                     CanalConnector canalConnector = initCanalConnector(entry);
                     canalConnectors.add(canalConnector);
-                    executor.execute(new CanalMessageExecutor(canalConnector, entry.getValue(), "CanalMessageExecutor-" + entry.getKey(), canalMessageDistributeHandler));
+                    executor.execute(new CanalMessageExecutor(canalConnector, entry.getKey(), entry.getValue(), "CanalMessageExecutor-" + entry.getKey(), canalMessageDistributeHandler));
                 });
     }
 
@@ -77,7 +77,6 @@ public class CanalConnectionHandler {
     /**
      * 初始化单个canal instance的连接
      * @param configEntry key->instance destination value-> instance properties
-     * @return
      */
     private CanalConnector initCanalConnector(Map.Entry<String, CanalConnectorProperties.InstanceProperties> configEntry){
         String destination = configEntry.getKey();

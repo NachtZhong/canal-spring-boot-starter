@@ -5,17 +5,14 @@ import com.alibaba.otter.canal.protocol.CanalEntry;
 import java.util.List;
 
 /**
- * canal dml事件处理器接口(原始column形式)
+ * canal dml事件处理器接口(原始column模式)
  * @author Nacht
  * Created on 2021/4/12
  */
-public interface CanalDmlRawEventListener extends CanalEventListener{
+public interface CanalDmlRawEventListener extends ICanalEventListener {
 
     /**
      * 根据类型分发dml事件
-     * @param eventType
-     * @param beforeColumns
-     * @param afterColumns
      */
     @Override
     default void onEvent(CanalEntry.EventType eventType, List<CanalEntry.Column> beforeColumns, List<CanalEntry.Column> afterColumns) {
@@ -41,14 +38,11 @@ public interface CanalDmlRawEventListener extends CanalEventListener{
 
     /**
      * 处理update事件
-     * @param beforeColumns
-     * @param afterColumns
      */
     void onUpdate(List<CanalEntry.Column> beforeColumns, List<CanalEntry.Column> afterColumns);
 
     /**
      * 处理delete事件
-     * @param beforeColumns
      */
     void onDelete(List<CanalEntry.Column> beforeColumns);
 

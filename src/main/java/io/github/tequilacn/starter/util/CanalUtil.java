@@ -15,7 +15,6 @@ public class CanalUtil {
 
     /**
      * 将列转换为实体
-     * @return
      */
     @SneakyThrows
     public static <T> T transformColumnsToBean(List<CanalEntry.Column> columns, Class<T> clazz) {
@@ -28,7 +27,9 @@ public class CanalUtil {
                     .findFirst()
                     .map(CanalEntry.Column::getValue)
                     .orElse(null);
-            field.set(result, value);
+            if(!field.getClass().isPrimitive() && value != null) {
+                field.set(result, value);
+            }
         }
         return result;
     }
